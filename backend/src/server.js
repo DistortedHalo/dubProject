@@ -498,10 +498,10 @@ app.get("/api/tracks", (req, res) => {
   res.json(tracks.map((track) => buildTrackResponse(track, req)));
 });
 
-app.get("/api/reset-tracks", (req, res) => {
-  db.exec("DELETE FROM tracks");
-  res.json({ ok: true });
-});
+// app.get("/api/reset-tracks", (req, res) => {
+//   db.exec("DELETE FROM tracks");
+//   res.json({ ok: true });
+// });
 
 app.post("/api/tracks/upload", upload.single("file"), (req, res) => {
   try {
