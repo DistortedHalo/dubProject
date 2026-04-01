@@ -9,12 +9,24 @@ import { DatabaseSync } from "node:sqlite";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
-const uploadsDir = path.join(rootDir, "uploads");
-const dataDir = path.join(rootDir, "data");
+
+const persistentRoot =
+  process.env.RAILWAY_VOLUME_MOUNT_PATH ||
+  process.env.PERSISTENT_STORAGE_PATH ||
+  "/data";
+
+const uploadsDir = path.join(persistentRoot, "uploads");
+const dataDir = path.join(persistentRoot, "data");
 const dbPath = path.join(dataDir, "dubsync.sqlite");
 
 fs.mkdirSync(uploadsDir, { recursive: true });
 fs.mkdirSync(dataDir, { recursive: true });
+
+console.log("rootDir:", rootDir);
+console.log("persistentRoot:", persistentRoot);
+console.log("uploadsDir:", uploadsDir);
+console.log("dataDir:", dataDir);
+console.log("dbPath:", dbPath);
 
 const db = new DatabaseSync(dbPath);
 
@@ -173,8 +185,6 @@ function getTracks() {
     `)
     .all();
 }
-
-
 
 function resolveTrackAudioUrl(track, req) {
   const rawAudioUrl = String(track.audioUrl || "");
@@ -376,7 +386,6 @@ function buildAdminCopyForm(content) {
   `;
 }
 
-
 const existingContent = getSiteContent();
 if (
   existingContent.homeIntro ===
@@ -423,6 +432,22 @@ app.use("/uploads", express.static(uploadsDir));
 
 app.get("/api/health", (_req, res) => {
   res.json({ ok: true, database: "sqlite", dbPath });
+});
+
+app.get("/api/debug-db", (_req, res) => {
+  const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+  const trackCount = db.prepare("SELECT COUNT(*) AS count FROM tracks").get();
+
+  res.json({
+    railwayVolumeMountPath: process.env.RAILWAY_VOLUME_MOUNT_PATH || null,
+    persistentStoragePath: process.env.PERSISTENT_STORAGE_PATH || null,
+    persistentRoot,
+    uploadsDir,
+    dataDir,
+    dbPath,
+    tables,
+    trackCount,
+  });
 });
 
 app.get("/api/site-content", (_req, res) => {
@@ -536,8 +561,8 @@ app.post("/admin/tracks/:id/delete", (req, res) => {
     const audioUrl = String(track.audio_url || "");
 
     if (audioUrl.startsWith("/uploads/")) {
-      const relativePath = audioUrl.replace(/^\/+/, "");
-      const filePath = path.join(rootDir, relativePath);
+      const filename = path.basename(audioUrl);
+      const filePath = path.join(uploadsDir, filename);
 
       if (fs.existsSync(filePath)) {
         try {
