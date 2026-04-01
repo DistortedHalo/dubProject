@@ -52,15 +52,16 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                   </p>
 
                   <div className="flex flex-wrap gap-4">
-                    <Button onClick={onSubmitBrief}>
-                      <ArrowRight size={16} />
-                      Submit brief
-                    </Button>
-                    <Button onClick={onLearnMore}>
-                      <ArrowRight size={16} />
-                      Learn More
-                    </Button>
-                  </div>
+                  <Button onClick={onSubmitBrief} variant="primary">
+                    <ArrowRight size={16} />
+                    Submit brief
+                  </Button>
+
+                  <Button onClick={onLearnMore} variant="ghost">
+                    <ArrowRight size={16} />
+                    Learn More
+                  </Button>
+                </div>
                 </div>
               </FadeIn>
             </div>
