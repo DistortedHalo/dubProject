@@ -106,26 +106,36 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
           </div>
         </section>
 
-        <section className="py-16 md:py-24">
+        
+       <section className="py-16 md:py-24">
           <div className="full-bleed">
-            <div className="relative overflow-hidden bg-neutral-950">
-              <img
-                src="images/e.jpeg"
-                alt="Night city movement"
-                className="absolute inset-0 h-full w-full object-cover opacity-30"
-              />
-              <div className="absolute inset-0 bg-black/55" />
-              <div className="relative container-shell grid min-h-[520px] gap-10 px-0 py-14 md:grid-cols-2 md:py-18 lg:grid-cols-3">
-                {metricTiles.map((stat, index) => (
-                  <FadeIn key={stat.value} delay={index * 0.08} className="self-end px-8 md:px-12">
-                    <div className="text-[4.2rem] font-medium leading-none tracking-[-0.06em] md:text-[5.5rem]">
-                      {stat.value}
-                    </div>
-                    <div className="mt-3 max-w-[220px] text-lg text-white/75">{stat.label}</div>
-                  </FadeIn>
-                ))}
+            <FadeIn delay={0.12}>
+              <div className="relative overflow-hidden border border-white/10 bg-neutral-900">
+                <img
+                  src="images/g.jpg"
+                  alt="Underground electronic mood"
+                  className="h-full min-h-[420px] w-full object-cover opacity-45"
+                />
+
+                <div className="absolute inset-0 bg-black/50" />
+
+                <div
+                  className="
+                    absolute left-1/2 top-1/2
+                    w-[78%]
+                    -translate-x-1/2 -translate-y-1/2
+                    text-center
+                    text-[0.7rem] md:text-[0.8rem]
+                    uppercase
+                    leading-[1.6]
+                    tracking-[0.22em]
+                    text-white/40
+                  "
+                >
+                  {renderMarkedText(content.homeSourcingOverlay)}
+                </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </section>
 
@@ -143,21 +153,51 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
           </div>
         </section>
 
-        <section className="py-16 md:py-24">
-          <div className="full-bleed">
-            <FadeIn delay={0.12}>
-              <div className="relative overflow-hidden border border-white/10 bg-neutral-900">
-                <img
-                  src="images/f.jpg"
-                  alt="Underground electronic mood"
-                  className="h-full min-h-[420px] w-full object-cover opacity-45"
-                />
-                <div className="absolute inset-0 bg-black/45" />
-                <div className="absolute left-1/2 top-1/2 w-[78%] -translate-x-1/2 -translate-y-1/2 text-center text-xs uppercase leading-[1.8] tracking-[0.28em] text-white/68 md:text-sm">
-                  {renderMarkedText(content.homeSourcingOverlay)}
+
+        <section className="py-20 md:py-28">
+          <div className="full-bleed" style={{margin: "0 auto"}}>
+            <div className="relative overflow-hidden bg-neutral-950">
+              <img
+                src="images/h.jpg"
+                alt="Night city movement"
+                className="absolute inset-0 h-full w-full object-cover opacity-30"
+              />
+
+              <div className="absolute inset-0 bg-black/55" />
+
+              <div className="relative container-shell min-h-[820px] px-0 py-24 md:min-h-[1100px] md:py-32">
+                <div className="flex flex-col">
+                  {[...metricTiles, {
+                    value: "~60–100",
+                    label: "curated tracks active at any time"
+                  }].map((stat, index) => {
+                    
+                    const stairClass =
+                      index % 2 === 0
+                        // LEFT
+                        ? "self-start pl-6 md:pl-16 lg:pl-24"
+                        // RIGHT (much stronger push)
+                        : "self-start pl-40 md:pl-72 lg:pl-[420px]";
+
+                    return (
+                      <FadeIn
+                        key={stat.value}
+                        delay={index * 0.08}
+                        className={`${stairClass} mb-14 md:mb-24`}
+                      >
+                        <div className="text-[4.8rem] font-medium leading-none tracking-[-0.06em] md:text-[7rem] lg:text-[8rem]">
+                          {stat.value}
+                        </div>
+
+                        <div className="mt-3 max-w-[280px] text-lg text-white/75 md:text-xl">
+                          {stat.label}
+                        </div>
+                      </FadeIn>
+                    );
+                  })}
                 </div>
               </div>
-            </FadeIn>
+            </div>
           </div>
         </section>
 
