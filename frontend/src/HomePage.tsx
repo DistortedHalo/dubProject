@@ -189,12 +189,12 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                     Whatsapp
                   </Button>
                 </a>
-                <a href = "">
+                
                 <Button onClick={onLearnMore}>
                   <ArrowRight size={16} />
                   Learn More
                 </Button>
-                </a>
+                
               </div>
             </div>
           </div>
