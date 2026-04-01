@@ -177,18 +177,18 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                   <ArrowRight size={16} />
                   Submit brief
                 </Button>
-                <a href="mailto:hello@dubsync.com">
-                  <Button>
+
+                  <Button href="mailto:hello@dubsync.com">
                     <Mail size={16} />
                     Email
                   </Button>
-                </a>
-                <a href="https://wa.me/">
-                  <Button>
+
+          
+                  <Button href="https://wa.me/">
                     <MessageCircle size={16} />
                     Whatsapp
                   </Button>
-                </a>
+    
                 
                 <Button onClick={onLearnMore}>
                   <ArrowRight size={16} />
