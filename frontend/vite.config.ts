@@ -5,8 +5,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": "https://dubsync-backend.vercel.app",
-      "/uploads": "https://dubsync-backend.vercel.app"
+      "/api": "https://dubproject-production.up.railway.app",
+      "/uploads": "https://dubproject-production.up.railway.app"
     }
   }
 });
