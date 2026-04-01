@@ -220,7 +220,7 @@ export function TrackList() {
   try {
     setLoading(true);
 
-    const API_BASE = "https://dubsync-backend.vercel.app";
+    const API_BASE = "https://dubproject-production.up.railway.app";
 
     const res = await fetch(`${API_BASE}/api/tracks`);
 
