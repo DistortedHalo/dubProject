@@ -30,7 +30,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                     sm:text-[96px]
                     md:text-[130px]
                     lg:text-[170px]
-                    xl:text-[210px]
+                    xl:text-[190px]
                   "
                   style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
