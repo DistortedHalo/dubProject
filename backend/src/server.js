@@ -11,7 +11,6 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 const uploadsDir = path.join(rootDir, "uploads");
 const dataDir = path.join(rootDir, "data");
-const legacyTracksFile = path.join(dataDir, "tracks.json");
 const dbPath = path.join(dataDir, "dubsync.sqlite");
 
 fs.mkdirSync(uploadsDir, { recursive: true });
@@ -208,70 +207,6 @@ function nextSortOrder() {
   return Number(row?.next_order ?? 0);
 }
 
-function normalizeImportedTracks(rawTracks) {
-  return rawTracks.map((track, index) => ({
-    id: track.id || `import-${Date.now()}-${index}`,
-    code: track.code || "UNTITLED_TRACK",
-    artist: track.artist || "Unknown Artist",
-    duration: track.duration || "—",
-    mood: track.mood || "",
-    bpm: track.bpm ?? null,
-    audioUrl: track.audioUrl || "",
-    sortOrder: index,
-  }));
-}
-
-function migrateLegacyJsonIfNeeded() {
-  const row = db.prepare("SELECT COUNT(*) AS count FROM tracks").get();
-  const count = Number(row?.count ?? 0);
-
-  if (count > 0) return;
-  if (!fs.existsSync(legacyTracksFile)) return;
-
-  try {
-    const raw = JSON.parse(fs.readFileSync(legacyTracksFile, "utf-8"));
-    if (!Array.isArray(raw) || raw.length === 0) return;
-
-    const tracks = normalizeImportedTracks(raw);
-    const insert = db.prepare(`
-      INSERT INTO tracks (
-        id,
-        code,
-        artist,
-        duration,
-        mood,
-        bpm,
-        audio_url,
-        sort_order
-      )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
-    db.exec("BEGIN");
-    try {
-      for (const track of tracks) {
-        insert.run(
-          track.id,
-          track.code,
-          track.artist,
-          track.duration,
-          track.mood,
-          track.bpm,
-          track.audioUrl,
-          track.sortOrder
-        );
-      }
-      db.exec("COMMIT");
-      console.log(`Migrated ${tracks.length} tracks from legacy JSON into SQLite.`);
-    } catch (error) {
-      db.exec("ROLLBACK");
-      throw error;
-    }
-  } catch (error) {
-    console.error("Failed to migrate legacy JSON:", error);
-  }
-}
-
 function compactSortOrder() {
   const rows = db
     .prepare(`
@@ -439,7 +374,6 @@ function buildAdminCopyForm(content) {
   `;
 }
 
-migrateLegacyJsonIfNeeded();
 
 const existingContent = getSiteContent();
 if (
