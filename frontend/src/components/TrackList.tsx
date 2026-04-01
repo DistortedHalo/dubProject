@@ -346,7 +346,7 @@ export function TrackList() {
   return (
     <div className="border border-white/10 bg-white/[0.02]">
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-4 md:px-6">
-        <div className="text-sm uppercase tracking-[0.22em] text-white/40">Backend powered tracks</div>
+        <div className="text-sm uppercase tracking-[0.22em] text-white/40">Dubsync powered tracks</div>
         <button
           type="button"
           onClick={loadTracks}
