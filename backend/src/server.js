@@ -498,7 +498,7 @@ app.get("/api/tracks", (req, res) => {
   res.json(tracks.map((track) => buildTrackResponse(track, req)));
 });
 
-app.post("/api/reset-tracks", (req, res) => {
+app.get("/api/reset-tracks", (req, res) => {
   db.exec("DELETE FROM tracks");
   res.json({ ok: true });
 });
