@@ -15,9 +15,9 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
       <LogoStamp onClick={onHome} />
 
       <main>
-        <section className="min-h-[160px] bg-black px-6 pt-8 pb-10 md:px-10 lg:px-14">
+        <section className="min-h-[160px] bg-black px-6 pt-8 pb-10 md:px-10 lg:px-10">
           <div className="mx-auto flex min-h-[160px] w-full max-w-[1280px] items-start">
-            <div className="w-full max-w-[1180px] pt-[9vh] md:pt-[7vh]">
+            <div className="w-full max-w-[1180px] pt-[9vh] md:pt-[10vh]">
               <FadeIn>
                 <h1
                   className="
@@ -46,8 +46,8 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
           <div className="container-shell">
             <div className="max-w-xl pb-2 md:pb-6">
               <FadeIn delay={0.12}>
-                <div className="space-y-8" style={{overflow:"visible"}}>
-                  <p className="text-[0.95rem] uppercase leading-[1.8] tracking-[0.26em] text-white/52 md:text-[1rem]">
+                <div className="space-y-10" style={{overflow:"visible"}}>
+                  <p className="text-[0.95rem] uppercase leading-[1.2] tracking-[0.08em] text-white/20 md:text-[0.875rem]">
                     {renderMarkedText(content.homeIntro)}
                   </p>
 
