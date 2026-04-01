@@ -35,7 +35,7 @@ export function App() {
   const [content, setContent] = useState<SiteContent>(defaultContent);
 
   useEffect(() => {
-    fetch("/api/site-content")
+    fetch("https://dubproject-production.up.railway.app/api/site-content")
       .then((res) => (res.ok ? res.json() : Promise.reject(new Error("Failed to load site content"))))
       .then((data) => setContent({ ...defaultContent, ...data }))
       .catch((error) => console.error(error));
