@@ -4,8 +4,8 @@ export default defineConfig({
     plugins: [react()],
     server: {
         proxy: {
-            "/api": "https://dubproject-production.up.railway.app",
-            "/uploads": "https://dubproject-production.up.railway.app"
+            "/api": "https://dubproject-production.up.railway.app:8080",
+            "/uploads": "https://dubproject-production.up.railway.app:8080"
         }
     }
 });
