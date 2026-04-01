@@ -189,13 +189,18 @@ body {
   color: black;
 }
 
-.animate-flash-number { animation: flash-number 0.15s linear infinite; }
+.animate-flash-number {
+  display: inline-block;
+  white-space: nowrap;
+  animation: flash-number 0.15s linear infinite; }
 @keyframes flash-number {
   0%, 100% { opacity: 1; transform: scale(1); text-shadow: 0 0 0 rgba(255,255,255,0); }
   50% { opacity: 0.45; transform: scale(1.1); text-shadow: 0 0 18px rgba(255,255,255,0.55); }
 }
 
 .flash-word {
+  display: inline-block;
+  white-space: nowrap;
   animation: wordPulse 0.2s linear infinite;
 }
 
