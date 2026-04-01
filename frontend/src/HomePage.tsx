@@ -52,13 +52,13 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                   </p>
 
                   <div className="flex flex-wrap gap-4">
-                    <Button onClick={onLearnMore}>
-                      <ArrowRight size={16} />
-                      Learn More
-                    </Button>
                     <Button onClick={onSubmitBrief}>
                       <ArrowRight size={16} />
                       Submit brief
+                    </Button>
+                    <Button onClick={onLearnMore}>
+                      <ArrowRight size={16} />
+                      Learn More
                     </Button>
                   </div>
                 </div>
@@ -177,14 +177,18 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                   <ArrowRight size={16} />
                   Submit brief
                 </Button>
-                <Button href="mailto:hello@dubsync.com">
-                  <Mail size={16} />
-                  Email
-                </Button>
-                <Button href="https://wa.me/">
-                  <MessageCircle size={16} />
-                  Whatsapp
-                </Button>
+                <a href="mailto:hello@dubsync.com">
+                  <Button>
+                    <Mail size={16} />
+                    Email
+                  </Button>
+                </a>
+                <a href="https://wa.me/">
+                  <Button>
+                    <MessageCircle size={16} />
+                    Whatsapp
+                  </Button>
+                </a>
                 <Button onClick={onLearnMore}>
                   <ArrowRight size={16} />
                   Learn More

@@ -1,21 +1,32 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import clsx from "clsx";
 
-type SharedProps = {
-  children: ReactNode;
-  className?: string;
-};
 
-type Props =
-  | (SharedProps & ButtonHTMLAttributes<HTMLButtonElement> & { href?: never })
-  | (SharedProps & AnchorHTMLAttributes<HTMLAnchorElement> & { href: string });
 
-export function Button(props: Props) {
-  const { children, className = "", ...rest } = props;
-  const classes = `small-outline-button gap-2 ${className}`;
+export function Button({
+  children,
+  onClick,
+  variant = "primary",
+}: {
+  children: React.ReactNode;
+  onClick?: () => void;
+  variant?: "primary" | "ghost";
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={clsx(
+        "inline-flex items-center gap-2 text-sm uppercase tracking-wide transition",
+        {
+          // default (Submit brief)
+          "text-white hover:opacity-70": variant === "primary",
 
-  if ("href" in props && props.href) {
-    return <a className={classes} {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}>{children}</a>;
-  }
-
-  return <button className={classes} {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}>{children}</button>;
+          // Learn More style
+          "text-white/40 hover:text-white/70": variant === "ghost",
+        }
+      )}
+    >
+      {children}
+    </button>
+  );
 }
