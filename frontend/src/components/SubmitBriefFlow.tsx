@@ -66,7 +66,7 @@ export function SubmitBriefFlow({ open, onClose }: SubmitBriefFlowProps) {
       setSubmitting(true);
       setSubmitError(null);
 
-      const response = await fetch("/api/briefs", {
+      const response = await fetch("https://dubproject-production.up.railway.app/api/briefs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

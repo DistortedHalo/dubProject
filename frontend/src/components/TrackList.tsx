@@ -222,7 +222,7 @@ export function TrackList() {
 
     const API_BASE = "https://dubproject-production.up.railway.app";
 
-    const res = await fetch(`${API_BASE}/api/tracks`);
+    const res = await fetch(`https://dubproject-production.up.railway.app/api/tracks`);
 
     if (!res.ok) {
       const text = await res.text();
