@@ -15,13 +15,12 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
       <LogoStamp onClick={onHome} />
 
       <main>
-        <section className="min-h-[160px] bg-black px-6 pt-8 pb-10 md:px-10 lg:px-10">
-          <div className="mx-auto flex min-h-[160px] w-full max-w-[1280px] items-start">
-            <div className="w-full max-w-[1180px] pt-[9vh] md:pt-[10vh]">
+     <section className="min-h-[160px] bg-black px-0 pt-8 pb-10 md:px-10 lg:px-10">
+          <div className="flex min-h-[160px] w-full items-start md:mx-auto md:max-w-[1280px]">
+            <div className="w-full pt-[9vh] md:pt-[10vh]">
               <FadeIn>
                 <h1
                   className="
-                    max-w-[1180px]
                     text-left
                     font-medium
                     leading-[0.9]
