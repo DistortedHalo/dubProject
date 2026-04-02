@@ -1,18 +1,20 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight, Mail, MessageCircle } from "lucide-react";
 import { livestreamStats } from "./data";
 import { Footer } from "./components/Footer";
 import { FadeIn } from "./components/FadeIn";
 import { LogoStamp } from "./components/LogoStamp";
 import { renderMultilineMarkedText } from "./textFormat";
 import type { SiteContent } from "./types";
+import { Button } from "./components/Button";
 
 type LearnMorePageProps = {
   onBack: () => void;
   onHome: () => void;
+  onSubmitBrief: () => void;
   content: SiteContent;
 };
 
-export function LearnMorePage({ onBack, onHome, content }: LearnMorePageProps) {
+export function LearnMorePage({ onBack, onHome, onSubmitBrief, content }: LearnMorePageProps) {
   return (
     <div className="min-h-screen bg-black text-white">
       <LogoStamp onClick={onHome} />
@@ -33,32 +35,18 @@ export function LearnMorePage({ onBack, onHome, content }: LearnMorePageProps) {
           </div>
         </section>
 
-        <section className="full-bleed overflow-hidden">
-          <div className="relative h-[40vh] md:h-[55vh]">
-            <img
-              src="images/g.jpg"
-              alt="Fast moving culture"
-              className="absolute inset-0 h-full w-full object-cover scale-[1.05]"
-            />
-            <div className="absolute inset-0 bg-black/60" />
-            <div className="absolute right-8 top-8 text-right md:right-16 md:top-12">
-              <div className="text-[3rem] md:text-[6rem] tracking-[-0.06em]">~60–100</div>
-              <div className="mt-3 text-white/80">curated tracks active at any time</div>
-            </div>
-          </div>
-        </section>
-
         <section className="px-0 py-24 md:py-32">
           <div className="container-shell">
             <FadeIn>
-              <h2 className="massive-title">
+              <h2 className="massive-title"
+                   style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 LIVE-STREAM DATA
                 <br />
                 (DEC 25’)
               </h2>
             </FadeIn>
 
-            <div className="mt-16 grid gap-8 md:grid-cols-5">
+            <div className="mt-16 grid gap-8 xs: grid-cols-2 md:grid-cols-5">
               {livestreamStats.map((stat, i) => (
                 <FadeIn key={stat.label} delay={i * 0.05}>
                   <div>
@@ -72,15 +60,68 @@ export function LearnMorePage({ onBack, onHome, content }: LearnMorePageProps) {
         </section>
 
         <section className="full-bleed overflow-hidden">
-          <div className="relative h-[70vh] md:h-[80vh]">
-            <img
-              src="images/h.jpg"
-              alt="Trees spinning"
-              className="absolute inset-0 h-full w-full object-cover scale-[1.05] opacity-90"
-            />
-            <div className="absolute inset-0 bg-black/60" />
-            <div className="absolute left-8 top-12 max-w-[700px] md:left-16 md:top-20">
-              <h2 className="huge-title">
+            <div className="relative min-h-[70vh] md:min-h-screen">
+              <img
+                src="images/h.jpg"
+                alt="Fast moving culture"
+                className="absolute inset-0 h-full w-full object-cover scale-[1.05]"
+              />
+              <div className="absolute inset-0 bg-black/60" />
+
+              <div className="relative z-10 flex h-full min-h-[70vh] md:min-h-screen flex-col justify-center px-6 py-16 md:px-12 lg:px-16">
+                
+                <FadeIn>
+                  <div className="w-full text-center mb-14 md:mb-20">
+                    <h2
+                      className="text-[2.6rem] leading-[0.9] tracking-[-0.06em] text-white md:text-[5rem]"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      LIVE-STREAM DATA
+                      <br />
+                      (DEC 25’)
+                    </h2>
+                  </div>
+                </FadeIn>
+
+                <div className="flex flex-col gap-10 md:gap-14">
+                  {livestreamStats.map((stat, i) => {
+                    const isLeft = i % 2 === 0;
+
+                    return (
+                      <FadeIn key={stat.label} delay={i * 0.05}>
+                        <div className={`flex w-full ${isLeft ? "justify-start" : "justify-end"}`}>
+                          <div
+                            className={`
+                              max-w-[280px] md:max-w-[340px]
+                              ${isLeft ? "text-left" : "text-right"}
+                              ${isLeft ? "md:ml-[6%] lg:ml-[10%]" : "md:mr-[6%] lg:mr-[10%]"}
+                            `}
+                          >
+                            <div className="text-[2.2rem] leading-none tracking-[-0.06em] text-white md:text-[4.5rem]">
+                              {stat.value}
+                            </div>
+                            <div className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">
+                              {stat.label}
+                            </div>
+                          </div>
+                        </div>
+                      </FadeIn>
+                    );
+                  })}
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+
+
+        <section className="full-bleed overflow-hidden">
+          <div className="relative min-h-[50vh]">
+  
+            <div className="bg-black/60" />
+            <div className="max-w-[1280px] md:mx-auto md:top-200" style={{paddingBottom: "120px"}}>
+              <h2 className="massive-title" style={{paddingTop:"120px"}}>
                 NOT A LIBRARY
                 <br />
                 (NOT A PLATFORM)
@@ -98,18 +139,20 @@ export function LearnMorePage({ onBack, onHome, content }: LearnMorePageProps) {
         <section className="full-bleed overflow-hidden">
           <div className="relative min-h-[90vh]">
             <img
-              src="images/i.jpg"
-              alt="Blurred motion"
-              className="absolute inset-0 h-full w-full object-cover scale-[1.05]"
+              src="images/c.jpg"
+              alt="Trees spinning"
+              className="absolute inset-0 h-full w-full object-cover scale-[1.05] opacity-90"
             />
+          
             <div className="absolute inset-0 bg-black/70" />
 
             <div className="relative z-10 container-shell py-24 md:py-32">
-              <h3 className="max-w-[900px] text-[2rem] font-semibold uppercase leading-[1.18] tracking-[-0.04em] md:text-[3rem]">
+              <h3 className="md:mx-auto max-w-[900px] text-[1.5rem] md:text-[2rem] uppercase leading-[1.18] tracking-[-0.04em]"
+               style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 {content.learnLibraryHeading}
               </h3>
 
-              <div className="mt-20 max-w-[720px] space-y-10 text-[1.1rem] leading-9 text-white/60">
+              <div className="text-white/18 md:mx-auto mt-20 max-w-[720px] space-y-0 text-[1.1rem] leading-6 text-white/60">
                 {content.learnLibraryBody
                   .split(/\n\n+/)
                   .filter(Boolean)
@@ -120,6 +163,51 @@ export function LearnMorePage({ onBack, onHome, content }: LearnMorePageProps) {
             </div>
           </div>
         </section>
+
+<section className="py-20 md:py-28">
+
+    <div className="mx-auto text-center" style={{paddingBottom: "40px"}}>
+      <h2
+        className="massive-title"
+        style={{ fontWeight: "500" }}
+      >
+        Submit
+        <br />
+        brief.
+      </h2>
+    </div>
+  <div className="mx-auto w-full max-w-[680px] px-4">
+    <div className="border border-white/10  backdrop-blur-sm p-8 md:p-10 rounded-2xl text-center shadow-[0_0_40px_rgba(0,0,0,0.4)]">
+      
+      <div className="flex flex-wrap justify-center gap-4">
+                <Button onClick={onSubmitBrief}>
+                  <ArrowRight size={16} />
+                  Submit brief
+                </Button>
+
+              <Button href="mailto:hello@dubsync.com">
+                    <Mail size={16} />
+                    Email
+                </Button>
+
+          
+                <Button href="https://wa.me/">
+                  <MessageCircle size={16} />
+                  Whatsapp
+                </Button>
+    
+                
+              <Button onClick={onBack}>
+                <ArrowRight size={16} />
+                Learn More
+              </Button>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+   
       </main>
 
       <Footer onLearnMore={onBack} onHome={onHome} content={content} />

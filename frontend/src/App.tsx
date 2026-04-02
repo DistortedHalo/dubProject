@@ -65,7 +65,7 @@ export function App() {
       )}
 
       {view === "learnMore" && (
-        <LearnMorePage onBack={goHome} onHome={goHome} content={content} />
+        <LearnMorePage  onHome={() => goHome} content={content} onBack={() => setView("home")} onSubmitBrief={() => setSubmitOpen(true)} />
       )}
 
       <SubmitBriefFlow open={submitOpen} onClose={() => setSubmitOpen(false)} />
