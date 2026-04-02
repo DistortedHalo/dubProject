@@ -74,7 +74,10 @@ const insertSetting = db.prepare(`
 `);
 
 for (const [key, value] of Object.entries(defaultSiteContent)) {
-  insertSetting.run(key, value);
+  insertSetting.run(
+    key,
+    typeof value === "string" ? value : JSON.stringify(value)
+  );
 }
 
 db.exec(`
