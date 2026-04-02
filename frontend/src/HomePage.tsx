@@ -41,24 +41,24 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
           </div>
         </section>
 
-        <section className="px-0 py-16 md:py-0">
+        <section className="px-0 py-16 md:py-32 md:pl-20">
           <div className="container-shell" >
             <div className="max-w-xl pb-2 md:pb-6">
               <FadeIn delay={0.12}>
                 <div className="space-y-8" style={{overflow:"visible"}}>
                   <p
                     className="text-white/40
-                      text-[0.95rem] uppercase leading-[1.2] tracking-[0.08em]
-                       md:text-[0.875rem]
+                      text-[0.8rem] uppercase leading-[1.4] tracking-[0.08em]
+                       md:text-[0.750rem]
                       transition-all duration-300 ease-out
                       hover:text-white/90 hover:scale-[1.03]
                     "
-                    style={{ fontFamily: "Inter", fontWeight:70 }}
+                    style={{ fontFamily: "Inter", fontWeight:20 }}
                   >
                     {renderMarkedText(content.homeIntro)}
                   </p>
-                  <div className="flex flex-wrap gap-4">
-                  <Button onClick={onSubmitBrief} variant="primary">
+                  <div className="flex flex-wrap gap-4" style={{ fontWeight: 500 }}>
+                  <Button onClick={onSubmitBrief} variant="primary" >
                     <ArrowRight size={16} />
                     Submit brief
                   </Button>
@@ -74,7 +74,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
           </div>
         </section>
 
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-16">
         <div className="full-bleed overflow-hidden">
           <div className="carousel-track py-4">
             {[...evidenceCards, ...evidenceCards].map((card, index) => (
