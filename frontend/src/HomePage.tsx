@@ -181,7 +181,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                         // LEFT
                         ? "self-start pl-6 md:pl-16 lg:pl-24"
                         // RIGHT (much stronger push)
-                        : "self-start pl-40 md:pl-72 lg:pl-[1280px]";
+                        : "self-start pl-40 md:pl-72 lg:pl-[920px]";
 
                     return (
                       <FadeIn
