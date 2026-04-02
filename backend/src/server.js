@@ -28,6 +28,44 @@ console.log("uploadsDir:", uploadsDir);
 console.log("dataDir:", dataDir);
 console.log("dbPath:", dbPath);
 
+
+
+const defaultSiteContent = {
+  homeHero: `Underground
+electronic
+music.
+Cleared fast.`,
+  homeIntro:
+    "DUBSYNC CONNECTS BRANDS TO ELECTRONIC MUSIC SUBMITTED ON DUBSELECTOR — OUR DAILY UNDERGROUND LIVESTREAM DELIVERING REAL-TIME COMMUNITY FEEDBACK. ##~3000## NEW TRACKS EACH MONTH. ##~100## HOURS REVIEWED WEEKLY. GET CURRENT MUSIC, NOT CATALOGUE MUSIC.",
+  homeSectionTitle: `Music that already
+exists`,
+  homeSourcingOverlay:
+    "DUBSYNC SOURCES MUSIC THAT ALREADY EXISTS ACROSS EMERGING UNDERGROUND SCENES. EVERY TRACK IS SUBMITTED VIA DUBSELECTOR AND SHAPED BY COMMUNITY RESPONSE. OUR LIVESTREAMS ATTRACT MORE THAN ~30K VIEWS EACH MONTH. WHAT COMES THROUGH REFLECTS WHAT'S TRENDING NOW, NOT LAST YEAR",
+  learnHero: `Where ##culture##
+moves
+first`,
+  learnLibraryHeading: "MUSIC AND TRENDS MOVE FASTER THAN SYSTEMS BUILT TO CONTAIN THEM.",
+  learnLibraryBody: `DubSync is built around live intake instead of static catalogues.
+
+We listen to over 100 hours of new music every week, surfaced directly from a global community of emerging electronic and dance producers.
+
+Because the music already exists culturally, it translates naturally to social and online content — not forced sync music.
+
+DubSync is not a library or a platform. It is a live sourcing layer built for relevance, speed, and taste.`,
+  footerTagline: "Curated electronic music sourcing",
+  footerLocation: "24HR LDN, SF, ATX",
+  footerPartnership: "Operated in partnership with underground tastemakers.",
+  footerPartners: "DUBSELECTOR / Labels / Observers / Artists",
+  rotatingWords: [
+    "on USBs.",
+    "in rooms.",
+    "##in culture.##",
+    "underground.",
+    "online.",
+    "without a brief.",
+  ],
+};
+
 const db = new DatabaseSync(dbPath);
 
 const insertSetting = db.prepare(`
@@ -92,41 +130,6 @@ try {
   db.exec("ALTER TABLE briefs ADD COLUMN status TEXT NOT NULL DEFAULT 'Pending'");
 } catch {}
 
-const defaultSiteContent = {
-  homeHero: `Underground
-electronic
-music.
-Cleared fast.`,
-  homeIntro:
-    "DUBSYNC CONNECTS BRANDS TO ELECTRONIC MUSIC SUBMITTED ON DUBSELECTOR — OUR DAILY UNDERGROUND LIVESTREAM DELIVERING REAL-TIME COMMUNITY FEEDBACK. ##~3000## NEW TRACKS EACH MONTH. ##~100## HOURS REVIEWED WEEKLY. GET CURRENT MUSIC, NOT CATALOGUE MUSIC.",
-  homeSectionTitle: `Music that already
-exists`,
-  homeSourcingOverlay:
-    "DUBSYNC SOURCES MUSIC THAT ALREADY EXISTS ACROSS EMERGING UNDERGROUND SCENES. EVERY TRACK IS SUBMITTED VIA DUBSELECTOR AND SHAPED BY COMMUNITY RESPONSE. OUR LIVESTREAMS ATTRACT MORE THAN ~30K VIEWS EACH MONTH. WHAT COMES THROUGH REFLECTS WHAT'S TRENDING NOW, NOT LAST YEAR",
-  learnHero: `Where ##culture##
-moves
-first`,
-  learnLibraryHeading: "MUSIC AND TRENDS MOVE FASTER THAN SYSTEMS BUILT TO CONTAIN THEM.",
-  learnLibraryBody: `DubSync is built around live intake instead of static catalogues.
-
-We listen to over 100 hours of new music every week, surfaced directly from a global community of emerging electronic and dance producers.
-
-Because the music already exists culturally, it translates naturally to social and online content — not forced sync music.
-
-DubSync is not a library or a platform. It is a live sourcing layer built for relevance, speed, and taste.`,
-  footerTagline: "Curated electronic music sourcing",
-  footerLocation: "24HR LDN, SF, ATX",
-  footerPartnership: "Operated in partnership with underground tastemakers.",
-  footerPartners: "DUBSELECTOR / Labels / Observers / Artists",
-  rotatingWords: [
-    "on USBs.",
-    "in rooms.",
-    "##in culture.##",
-    "underground.",
-    "online.",
-    "without a brief.",
-  ],
-};
 
 const briefStatusOptions = ["Pending", "In progress", "Complete"];
 
