@@ -181,7 +181,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                         // LEFT
                         ? "self-start pl-6 md:pl-16 lg:pl-24"
                         // RIGHT (much stronger push)
-                        : "self-start pl-40 md:pl-72 lg:pl-[420px]";
+                        : "self-start pl-40 md:pl-72 lg:pl-[1280px]";
 
                     return (
                       <FadeIn
@@ -189,7 +189,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                         delay={index * 0.08}
                         className={`${stairClass} mb-14 md:mb-24`}
                       >
-                        <div className="text-[4.8rem] font-medium leading-none tracking-[-0.06em] md:text-[7rem] lg:text-[8rem]">
+                        <div className="inline text-[4.8rem] font-medium leading-none tracking-[-0.06em] md:text-[7rem] lg:text-[8rem]">
                           {stat.value}
                         </div>
 
