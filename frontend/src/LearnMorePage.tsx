@@ -35,11 +35,11 @@ export function LearnMorePage({ onBack, onHome, onSubmitBrief, content }: LearnM
           </div>
         </section>
 
-        <section className="px-0 py-24 md:py-32">
+        <section className="px-0 py-24 md:py-32" style={{fontWeight: 200}} >
           <div className="container-shell">
             <FadeIn>
               <h2 className="massive-title"
-                   style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                   style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight:35, textAlign: "center" }}>
                 LIVE-STREAM DATA
                 <br />
                 (DEC 25’)
@@ -50,7 +50,7 @@ export function LearnMorePage({ onBack, onHome, onSubmitBrief, content }: LearnM
               {livestreamStats.map((stat, i) => (
                 <FadeIn key={stat.label} delay={i * 0.05}>
                   <div>
-                    <div className="text-2xl text-white md:text-3xl">{stat.value}</div>
+                    <div className="text-sm text-white md:text-sm">{stat.value}</div>
                     <div className="mt-2 text-white/40">{stat.label}</div>
                   </div>
                 </FadeIn>
@@ -70,18 +70,6 @@ export function LearnMorePage({ onBack, onHome, onSubmitBrief, content }: LearnM
 
               <div className="relative z-10 flex h-full min-h-[70vh] md:min-h-screen flex-col justify-center px-6 py-16 md:px-12 lg:px-16">
                 
-                <FadeIn>
-                  <div className="w-full text-center mb-14 md:mb-20">
-                    <h2
-                      className="text-[2.6rem] leading-[0.9] tracking-[-0.06em] text-white md:text-[5rem]"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
-                      LIVE-STREAM DATA
-                      <br />
-                      (DEC 25’)
-                    </h2>
-                  </div>
-                </FadeIn>
 
                 <div className="flex flex-col gap-10 md:gap-14">
                   {livestreamStats.map((stat, i) => {
@@ -121,7 +109,7 @@ export function LearnMorePage({ onBack, onHome, onSubmitBrief, content }: LearnM
   
             <div className="bg-black/60" />
             <div className="max-w-[1280px] md:mx-auto md:top-200" style={{paddingBottom: "120px"}}>
-              <h2 className="massive-title" style={{paddingTop:"120px"}}>
+              <h2 className="massive-title md:mx-auto" style={{paddingTop:"120px", fontWeight: 30, textAlign: "center"}}>
                 NOT A LIBRARY
                 <br />
                 (NOT A PLATFORM)
@@ -148,7 +136,7 @@ export function LearnMorePage({ onBack, onHome, onSubmitBrief, content }: LearnM
 
             <div className="relative z-10 container-shell py-24 md:py-32">
               <h3 className="md:mx-auto max-w-[900px] text-[1.5rem] md:text-[2rem] uppercase leading-[1.18] tracking-[-0.04em]"
-               style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+               style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 35, textAlign: "center" }}>
                 {content.learnLibraryHeading}
               </h3>
 

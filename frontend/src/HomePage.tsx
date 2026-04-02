@@ -41,7 +41,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
           </div>
         </section>
 
-        <section className="px-0 py-16 md:py-32 md:pl-20">
+        <section className="px-0 py-8 md:py-8 md:pl-20">
           <div className="container-shell" >
             <div className="max-w-xl pb-2 md:pb-6">
               <FadeIn delay={0.12}>
@@ -74,13 +74,13 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
           </div>
         </section>
 
-      <section className="py-16 md:py-16">
+      <section className="py-24 md:py-24">
         <div className="full-bleed overflow-hidden">
           <div className="carousel-track py-4">
             {[...evidenceCards, ...evidenceCards].map((card, index) => (
               <div
                 key={`${card.title}-${index}`}
-                className="w-[260px] shrink-0 border border-white/10 bg-white/[0.03] md:w-[320px]"
+                className="w-[260px] shrink-0 border border-white/10 bg-white/[0.03] md:w-[420px]"
               >
                 <div className="aspect-[16/9] w-full overflow-hidden group">
                   <img
