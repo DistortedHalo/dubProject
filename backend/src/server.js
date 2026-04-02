@@ -30,6 +30,24 @@ console.log("dbPath:", dbPath);
 
 const db = new DatabaseSync(dbPath);
 
+const insertSetting = db.prepare(`
+  INSERT OR IGNORE INTO site_settings (key, value)
+  VALUES (?, ?)
+`);
+
+for (const [key, value] of Object.entries(defaultSiteContent)) {
+  insertSetting.run(key, value);
+}
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS site_settings (
+    key TEXT PRIMARY KEY,
+    value TEXT NOT NULL
+  )
+`);
+
+
+
 db.exec(`
   CREATE TABLE IF NOT EXISTS tracks (
     id TEXT PRIMARY KEY,
@@ -276,7 +294,9 @@ function getBriefCount() {
 }
 
 function getSiteContent() {
+  // 1. Get stored values
   const rows = db.prepare("SELECT key, value FROM site_settings").all();
+
   const stored = Object.fromEntries(
     rows.map((row) => {
       try {
@@ -287,6 +307,23 @@ function getSiteContent() {
     })
   );
 
+  // 2. Insert missing defaults into DB (PERSISTENCE FIX)
+  const insert = db.prepare(`
+    INSERT OR IGNORE INTO site_settings (key, value)
+    VALUES (?, ?)
+  `);
+
+  for (const [key, value] of Object.entries(defaultSiteContent)) {
+    if (!(key in stored)) {
+      insert.run(
+        key,
+        typeof value === "string" ? value : JSON.stringify(value)
+      );
+      stored[key] = value; // also update local copy
+    }
+  }
+
+  // 3. Return merged content
   return {
     ...defaultSiteContent,
     ...stored,
