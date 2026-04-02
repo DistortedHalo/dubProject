@@ -157,7 +157,9 @@ export function LearnMorePage({ onBack, onHome, onSubmitBrief, content }: LearnM
                   .split(/\n\n+/)
                   .filter(Boolean)
                   .map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                    <p className="whitespace-pre-line" key={paragraph}>
+                      {paragraph}
+                    </p>
                   ))}
               </div>
             </div>
