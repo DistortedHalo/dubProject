@@ -15,7 +15,7 @@ export function Button({
   variant = "primary",
 }: ButtonProps) {
   const className = clsx(
-    "inline-flex items-center gap-2 text-sm uppercase tracking-wide transition",
+    "inline-flex items-center gap-2 text-sm tracking-wide transition",
     {
       "text-white hover:opacity-70": variant === "primary",
       "text-white/40 hover:text-white/70": variant === "ghost",

@@ -167,7 +167,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                 className="absolute inset-0 h-full w-full object-cover opacity-30"
               />
 
-              <div className="absolute inset-0 bg-black/55" />
+              <div className="absolute inset-0 bg-black/10" />
 
               <div className="relative container-shell min-h-[820px] px-0 py-24 md:min-h-[1100px] md:py-32">
                 <div className="flex flex-col">
