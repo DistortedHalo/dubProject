@@ -1,4 +1,4 @@
-import { Pause, Play, RefreshCw } from "lucide-react";
+import { Pause, Play, RefreshCw, Scale } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Track } from "../types";
 
@@ -344,7 +344,7 @@ export function TrackList() {
   };
 
   return (
-    <div className="border border-white/10 bg-white/[0.02]">
+    <div className="border border-white/10 bg-white/[0.02]"style={{transform: "scale(0.8)"}}>
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-4 md:px-6">
         <div className="text-sm uppercase tracking-[0.22em] text-white/40">Dubsync powered tracks</div>
         <button

@@ -42,14 +42,21 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
         </section>
 
         <section className="px-0 py-16 md:py-0">
-          <div className="container-shell">
+          <div className="container-shell" >
             <div className="max-w-xl pb-2 md:pb-6">
               <FadeIn delay={0.12}>
                 <div className="space-y-10" style={{overflow:"visible"}}>
-                  <p className="text-[0.95rem] uppercase leading-[1.2] tracking-[0.08em] text-white/20 md:text-[0.875rem]">
+                  <p
+                    className="text-white/40
+                      text-[0.95rem] uppercase leading-[1.2] tracking-[0.08em]
+                       md:text-[0.875rem]
+                      transition-all duration-300 ease-out
+                      hover:text-white/90 hover:scale-[1.03]
+                    "
+                    style={{ fontFamily: "inter" }}
+                  >
                     {renderMarkedText(content.homeIntro)}
                   </p>
-
                   <div className="flex flex-wrap gap-4">
                   <Button onClick={onSubmitBrief} variant="primary">
                     <ArrowRight size={16} />
@@ -67,30 +74,27 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
           </div>
         </section>
 
-        <section className="py-16 md:py-24">
-          <div className="full-bleed overflow-hidden border-y border-white/10">
-            <div className="carousel-track py-4">
-              {[...evidenceCards, ...evidenceCards].map((card, index) => (
-                <div
-                  key={`${card.title}-${index}`}
-                  className="w-[260px] shrink-0 border border-white/10 bg-white/[0.03] md:w-[320px]"
-                >
+      <section className="py-16 md:py-24">
+        <div className="full-bleed overflow-hidden">
+          <div className="carousel-track py-4">
+            {[...evidenceCards, ...evidenceCards].map((card, index) => (
+              <div
+                key={`${card.title}-${index}`}
+                className="w-[260px] shrink-0 border border-white/10 bg-white/[0.03] md:w-[320px]"
+              >
+                <div className="aspect-[16/9] w-full overflow-hidden group">
                   <img
                     src={card.image}
-                    alt={card.title}
-                    className="h-[220px] w-full object-cover opacity-80 md:h-[260px]"
+                    className="h-full w-full object-cover opacity-80 transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+  
                   />
-                  <div className="p-4 md:p-5">
-                    <div className="text-xs uppercase tracking-[0.22em] text-white/35">
-                      {card.category}
-                    </div>
-                    <div className="mt-2 text-xl text-white">{card.title}</div>
-                  </div>
                 </div>
-              ))}
-            </div>
+
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
         <section className="px-0 pb-10 md:pb-14">
           <div className="container-shell border-t border-white/10 pt-10 md:pt-16">
@@ -110,14 +114,14 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
        <section className="py-16 md:py-24">
           <div className="full-bleed">
             <FadeIn delay={0.12}>
-              <div className="relative overflow-hidden border border-white/10 bg-neutral-900">
+              <div className="relative overflow-hidden bg-neutral-900">
                 <img
                   src="images/g.jpg"
                   alt="Underground electronic mood"
-                  className="h-full min-h-[420px] w-full object-cover opacity-45"
+                  className="h-full min-h-[420px] w-full object-cover"
                 />
 
-                <div className="absolute inset-0 bg-black/50" />
+                <div className="absolute inset-0 bg-black/20" />
 
                 <div
                   className="
@@ -142,7 +146,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
         <section className="px-0 py-16 md:py-22">
           <div className="container-shell border-t border-white/10 pt-10 md:pt-14">
             <div className="grid gap-10 lg:grid-cols-[180px_1fr]">
-              <div className="text-xs uppercase tracking-[0.28em] text-white/30 lg:[writing-mode:vertical-rl] lg:rotate-180">
+              <div className="-translate-y-8 text-xs uppercase tracking-[0.28em] text-white/30 lg:[writing-mode:vertical-rl] lg:rotate-180">
                 Example tracks we pitch
               </div>
 

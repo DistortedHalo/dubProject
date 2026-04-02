@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 
-export function renderMarkedText(input: string, className = "flash-word"): ReactNode[] {
+export function renderMarkedText(input: string, className = getFlashClass(input)): ReactNode[] {
   const text = String(input ?? "");
+
   const parts: ReactNode[] = [];
   const regex = /##\{([^}]+)\}##|##([^#]+)##/g;
   let lastIndex = 0;
@@ -35,4 +36,18 @@ export function renderMultilineMarkedText(text: string) {
       {renderMarkedText(line)}
     </span>
   ));
+}
+
+function getFlashClass(word:string) {
+  // remove wrapping markers if you use ## ##
+  const clean = word.replace(/#/g, "").trim();
+
+  // match numbers like:
+  // 3000
+  // ~3000
+  // 60–100
+  // ~60–100
+  const isNumber = clean.includes("~");
+
+  return isNumber ? "flashing-number" : "flash-word";
 }

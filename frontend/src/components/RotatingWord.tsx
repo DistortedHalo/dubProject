@@ -25,12 +25,11 @@ export function RotatingWord({ words }: RotatingWordProps) {
       <AnimatePresence mode="wait">
         <motion.span
           key={word}
-          initial={{ rotateX: -90, opacity: 0 }}
-          animate={{ rotateX: 0, opacity: 1 }}
-          exit={{ rotateX: 90, opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className={`inline-block whitespace-nowrap ${isFlashing ? "word-rotator-flicker" : ""}`}
-          style={{ transformOrigin: "50% 50%" }}
         >
           {renderMarkedText(word)}
         </motion.span>
