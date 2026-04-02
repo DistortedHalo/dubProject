@@ -165,8 +165,13 @@ export function LearnMorePage({ onBack, onHome, onSubmitBrief, content }: LearnM
         <br />
         brief.
       </h2>
-    </div>
+      <br />
+       <p style={{opacity: 0.5 }}>See what's coming through right now </p>
+      <p style={{opacity: 0.5 }}>We'll come back with a short curated selection</p>
+  </div>
+
   <div className="mx-auto w-full max-w-[680px] px-4">
+   
     <div className="border border-white/10  backdrop-blur-sm p-8 md:p-10 rounded-2xl text-center shadow-[0_0_40px_rgba(0,0,0,0.4)]">
       
       <div className="flex flex-wrap justify-center gap-4">
