@@ -15,7 +15,7 @@ export function renderMarkedText(input: string, className = getFlashClass(input)
 
     const word = match[1] ?? match[2] ?? "";
     parts.push(
-      <span key={`${word}-${match.index}`} className={className} style={{ fontFamily: "Space Grotesk" }}>
+      <span key={`${word}-${match.index}`} className={className} >
         {word}
       </span>
     );

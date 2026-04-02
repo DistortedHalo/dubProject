@@ -45,7 +45,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
           <div className="container-shell" >
             <div className="max-w-xl pb-2 md:pb-6">
               <FadeIn delay={0.12}>
-                <div className="space-y-10" style={{overflow:"visible"}}>
+                <div className="space-y-8" style={{overflow:"visible"}}>
                   <p
                     className="text-white/40
                       text-[0.95rem] uppercase leading-[1.2] tracking-[0.08em]
@@ -53,7 +53,7 @@ export function HomePage({ onLearnMore, onSubmitBrief, onHome, content }: HomeAc
                       transition-all duration-300 ease-out
                       hover:text-white/90 hover:scale-[1.03]
                     "
-                    style={{ fontFamily: "inter" }}
+                    style={{ fontFamily: "Inter", fontWeight:70 }}
                   >
                     {renderMarkedText(content.homeIntro)}
                   </p>
